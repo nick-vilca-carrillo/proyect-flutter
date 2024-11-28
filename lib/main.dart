@@ -1,14 +1,21 @@
 import 'package:flutter/material.dart';
-
 import 'Apps/MyApp.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'firebase_options.dart';
 
-void main() {
-  runApp( MyApp());
+Future<void> main() async {
+  // Asegura que el entorno de Flutter esté listo para inicializar Firebase.
+  WidgetsFlutterBinding.ensureInitialized();
 
+  // Inicializa Firebase.
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
 
-
-
+  // Inicia tu aplicación.
+  runApp(MyApp());
 }
+
 /*
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
